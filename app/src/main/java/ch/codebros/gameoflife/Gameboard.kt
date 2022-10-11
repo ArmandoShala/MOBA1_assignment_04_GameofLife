@@ -34,7 +34,7 @@ class Gameboard constructor(var rows: Int, var columns: Int) {
                 // check bottom left
                 aliveNeighbours += hasNeighbor(r + 1, c - 1)
                 // check bottom middle
-                aliveNeighbours += hasNeighbor(r, c - 1)
+                aliveNeighbours += hasNeighbor(r + 1, c)
                 // check bottom right
                 aliveNeighbours += hasNeighbor(r + 1, c + 1)
 
@@ -46,12 +46,12 @@ class Gameboard constructor(var rows: Int, var columns: Int) {
 //                    board[r][c].alive = 0
                     futureState += Triple(r, c, false)
                 }
-//                if ((aliveNeighbours == 2 || aliveNeighbours == 3) && board[r][c].alive == 1) {
-//                    //    2. Any live cell with two or three live neighbours lives on to the next generation.
-////                    board[r][c].alive = 1
-//                    futureState += Triple(r, c, true)
-//                }
-
+                else if (board[r][c].alive == 0 && aliveNeighbours == 3 ) {
+                    //    4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+//                    board[r][c].alive = 1
+                    futureState += Triple(r, c, true)
+                }
+                    //    2. Any live cell with two or three live neighbours lives on to the next generation.
 
             }
         }
@@ -76,14 +76,7 @@ class Gameboard constructor(var rows: Int, var columns: Int) {
         }
         return retVal
     }
-
 }
-
-
-
-
-
-
 
 
 
