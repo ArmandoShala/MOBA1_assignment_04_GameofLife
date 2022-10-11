@@ -38,11 +38,7 @@ class Gameboard constructor(var rows: Int, var columns: Int) {
                 // check bottom right
                 aliveNeighbours += hasNeighbor(r + 1, c + 1)
 
-                if (board[r][c].alive == 0 && aliveNeighbours == 3 ) {
-                    //    4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-//                    board[r][c].alive = 1
-                    futureState += Triple(r, c, true)
-                }
+
 
                 if (aliveNeighbours < 2 || aliveNeighbours > 3) {
                     //    1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.
